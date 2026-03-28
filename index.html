@@ -1164,6 +1164,56 @@
     margin-top: 30px;
   }
 
+  /* Landscape (default) */
+.timeline-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Portrait videos - show full height, auto width */
+.timeline-photo.portrait-video {
+  aspect-ratio: 9/16;
+  object-fit: contain;
+  max-height: 400px;  /* Limit height so it doesn't get too tall */
+  margin: 0 auto;     /* Center horizontally */
+  background: #1A0D1A; /* Match your dark theme instead of black */
+}
+
+/* FOOD SECTION IMAGE SIZING - Add these */
+
+.food-img-wrap {
+  width: 100%;
+  aspect-ratio: 1/1;        /* Square ratio - keeps it compact */
+  max-height: 220px;        /* ← LIMITS HEIGHT - makes it smaller */
+  overflow: hidden;
+  position: relative;
+}
+
+.food-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Fills the box nicely */
+  display: block;
+}
+
+/* Also limit the card width so images don't get too big */
+.food-card {
+  min-width: 220px;         /* ← SMALLER than 250px */
+  max-width: 260px;         /* ← ADD: prevents stretching */
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(28,10,26,0.75);
+  border: 1px solid rgba(200,96,126,0.2);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s, box-shadow 0.4s;
+  position: relative;
+}
+
   /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
     .timeline-container::before { left: 20px; }
@@ -1230,7 +1280,7 @@
     <div class="hero-subtitle fade-up">— A love letter —</div>
     <div class="hero-line1 fade-up">"For the most beautiful soul in my life…"</div>
     <div class="hero-line2 fade-up">"You are my favorite story…"</div>
-    <div class="hero-birthday fade-up">Happy Birthday 💜</div>
+    <div class="hero-birthday fade-up">Happy Birthday My Love Moumi 💜</div>
     <div class="hero-divider fade-up"></div>
     <a href="#timeline" class="btn-start fade-up">Start Our Journey <span>✨</span></a>
   </div>
@@ -1251,12 +1301,12 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <!-- PHOTO SLOT 1: <img class="timeline-photo" src="images/memory1.jpg" alt="First Meeting"> -->
-        <div class="photo-placeholder"><span>Photo 1 — First Meeting</span></div>
+        <img class="timeline-photo" src="images/memory1.jpeg" alt="First Meeting">
+        <div class="photo-placeholder"><span>First Clicking Picture</span></div>
         <div class="timeline-body">
-          <div class="timeline-date">28 August 2022</div>
+          <div class="timeline-date">01 September 2022</div>
           <div class="timeline-title">The Day Everything Changed</div>
-          <p class="timeline-text">The first time I saw you, something in my world shifted quietly. I didn't know then that this was the beginning of my favorite chapter. You smiled, and I was already gone.</p>
+          <p class="timeline-text">The first time i stayed in the campus and we took our meal and then click this picture togather. You looks so amazing in that day</p>
         </div>
       </div>
     </div>
@@ -1264,25 +1314,26 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <!-- PHOTO SLOT 2: <img class="timeline-photo" src="images/memory2.jpg" alt="Memory 2"> -->
-        <div class="photo-placeholder"><span>Photo 2 — Add Your Memory</span></div>
+        <img class="timeline-photo" src="images/memory3.jpeg" alt="Memory 2">
+        <div class="photo-placeholder"><span>Our first Trip</span></div>
         <div class="timeline-body">
-          <div class="timeline-date">Add Your Date Here</div>
-          <div class="timeline-title">Our First Food Date</div>
-          <p class="timeline-text">Do you remember how nervous we were? Yet somehow it felt like we'd known each other forever. Every bite tasted better because you were there.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <!-- PHOTO SLOT 3: <img class="timeline-photo" src="images/memory3.jpg" alt="Memory 3"> -->
-        <div class="photo-placeholder"><span>Photo 3 — Add Your Memory</span></div>
-        <div class="timeline-body">
-          <div class="timeline-date">Add Your Date Here</div>
+          <div class="timeline-date">11 January 2023</div>
           <div class="timeline-title">A Moment I'll Never Forget</div>
-          <p class="timeline-text">There are moments that brand themselves onto your heart. This was one of them. You didn't even know how beautiful you looked, and that made it even more perfect.</p>
+          <p class="timeline-text">I dont have this Day's picture. Thats why i am shearing another picture but same perspective. You know what I mean 😁. On the you weareing a white dress... and we just lost togather. Cant you remember💕? How wonderful the day was!❤️</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory5.jpeg" alt="Memory 3">
+        <div class="photo-placeholder"><span>The Eid Day</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">22 April 2023</div>
+          <div class="timeline-title">A Day to Remember</div>
+          <p class="timeline-text">That day we celebrated Eid together. We wathed movie then meet with my cousings. The joy and love we shared made it truly special. ❤️</p>
         </div>
       </div>
     </div>
@@ -1290,12 +1341,12 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <!-- PHOTO SLOT 4: <img class="timeline-photo" src="images/memory4.jpg" alt="Memory 4"> -->
-        <div class="photo-placeholder"><span>Photo 4 — Add Your Memory</span></div>
+        <img class="timeline-photo" src="images/memory4.jpeg" alt="Memory 4">
+        <div class="photo-placeholder"><span>How cute we are</span></div>
         <div class="timeline-body">
-          <div class="timeline-date">Add Your Date Here</div>
+          <div class="timeline-date">6 July 2023</div>
           <div class="timeline-title">Just the Two of Us</div>
-          <p class="timeline-text">No grand adventure needed. Just us, together, laughing about nothing — this was when I realized that home isn't a place. Home is you.</p>
+          <p class="timeline-text">That day we went to the Romna Park with our friends. We enjoyed togather and i gave the flower to you like this.❤️</p>
         </div>
       </div>
     </div>
@@ -1303,15 +1354,120 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <!-- PHOTO SLOT 5: <img class="timeline-photo" src="images/memory5.jpg" alt="Memory 5"> -->
-        <div class="photo-placeholder"><span>Photo 5 — Add Your Memory</span></div>
+        <img class="timeline-photo" src="images/memory6.jpeg" alt="Memory 5">
+        <div class="photo-placeholder"><span>First Meet with my Mother</span></div>
         <div class="timeline-body">
-          <div class="timeline-date">Add Your Date Here</div>
-          <div class="timeline-title">Write Your Title Here</div>
-          <p class="timeline-text">Replace this text with your own beautiful memory. Every detail you remember is a treasure worth writing down. This is your story — tell it your way.</p>
+          <div class="timeline-date">30 December 2023</div>
+          <div class="timeline-title">Our First Meet with my Mother</div>
+          <p class="timeline-text">We meet with her for the first time and it was a memorable moment. in BFC , Dhanmondi</p>
         </div>
       </div>
     </div>
+
+    <!-- For portrait videos -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <video class="timeline-photo portrait-video" 
+              src="images/memory7.mp4" 
+              autoplay muted loop playsinline>
+        </video>
+        <div class="photo-placeholder" style="display:none;"><span>First Ring Gift</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">31 December 2023</div>
+          <div class="timeline-title">First Ring Gift for new year</div>
+          <p class="timeline-text">you were Sad and i come to you to make you happy and i brought a ring with me. We were at the Bridge er gora. and suddenly i gift you the ring.💍</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory2.jpeg" alt="Memory 6">
+        <div class="photo-placeholder"><span>First Valentine + Falgun</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">14 February 2024</div>
+          <div class="timeline-title">Our First Valentine + Falgun</div>
+          <p class="timeline-text">in that day you looked so Gorgeous in Saree. We attend the Mela and enjoid a lot</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory8.jpeg" alt="Memory 8">
+        <div class="photo-placeholder"><span>After Valentine</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">15 February 2024</div>
+          <div class="timeline-title">Next day of Valentine</div>
+          <p class="timeline-text">Can you remember the day ? At the 3rd Floor of the University???</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory9.jpeg" alt="Memory 8">
+        <div class="photo-placeholder"><span>First Picnic</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">02 March 2024</div>
+          <div class="timeline-title">Suborno Gram</div>
+          <p class="timeline-text">We spend a lot of time together at Suborno Gram. It was a beautiful day filled with laughter and joy. From the morning the bus journey was long but worth it. We were singing, dancing, and having the time of our lives.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- For portrait videos -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <video class="timeline-photo portrait-video" 
+              src="images/memory10.mp4" 
+              autoplay muted loop playsinline>
+        </video>
+        <div class="photo-placeholder" style="display:none;"><span>Mehedi Night</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">19 jun 2024</div>
+          <div class="timeline-title">Mehedi Night</div>
+          <p class="timeline-text">yeeee the first time I design mehedi on your hand. can you rember this Darling ?❤️
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory11.jpeg" alt="Memory 11">
+        <div class="photo-placeholder"><span>My Birthday</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">20 August 2024</div>
+          <div class="timeline-title">My Birthday</div>
+          <p class="timeline-text">It was the best birthday ever! I felt so loved and appreciated. Thank you for making it special. You were the best present ever! ❤️ My birthday gift.....</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory12.jpeg" alt="Memory 11">
+        <div class="photo-placeholder"><span>Danish Chicken</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">09 Octbar 2024</div>
+          <div class="timeline-title">We Fight but We Stay....❤️</div>
+          <p class="timeline-text">Look at the picture again... We are fighting with one hand... but look we are holding each other with our another hand... thats why we fight but we stay all of the time... Ma Sah Allah❤️ </p>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    
 
   </div>
 </section>
@@ -1361,30 +1517,40 @@
     <div class="section-line"></div>
   </div>
   <div class="travel-grid">
+
     <div class="travel-card" onclick="openModal('travel1')">
-      <div class="card-img-wrap"><div class="photo-placeholder"><span>Photo 6 — Travel Memory 1</span></div></div>
+      <div class="card-img-wrap">
+        <img class="travel-photo" src="images/memory3.jpeg" alt="Travel Memory 1" loading="lazy">
+      </div>
       <div class="travel-card-body">
-        <h3>Add Location Name</h3>
-        <p>Write a short description of this trip here…</p>
+        <h3>You know about our trips, don't you? 😘</h3>
+        <p>Where we can touch our Souls, Can feel our warmth, We lost between us, multiples time.....🥰</p>
         <button class="btn-view-memory">View Memory 💜</button>
       </div>
     </div>
+
     <div class="travel-card" onclick="openModal('travel2')">
-      <div class="card-img-wrap"><div class="photo-placeholder"><span>Photo 7 — Travel Memory 2</span></div></div>
+      <div class="card-img-wrap">
+        <img class="travel-photo" src="images/travel2_d1.jpeg" alt="Travel Memory 2" loading="lazy">
+      </div>
       <div class="travel-card-body">
-        <h3>Add Location Name</h3>
-        <p>Write a short description of this trip here…</p>
+        <h3>Modhu City</h3>
+        <p>We could'nt decided where to go. And finally we went Modhu City and had a great time.</p>
         <button class="btn-view-memory">View Memory 💜</button>
       </div>
     </div>
+
     <div class="travel-card" onclick="openModal('travel3')">
-      <div class="card-img-wrap"><div class="photo-placeholder"><span>Photo 8 — Travel Memory 3</span></div></div>
+      <div class="card-img-wrap">
+        <img class="travel-photo" src="images/travel3_d1.jpeg" alt="Travel Memory 3" loading="lazy">
+      </div>
       <div class="travel-card-body">
-        <h3>Add Location Name</h3>
-        <p>Write a short description of this trip here…</p>
+        <h3>Toggi Fun World</h3>
+        <p>You always wanted to go there and we finally did! Me and Ibrahim was also with you.</p>
         <button class="btn-view-memory">View Memory 💜</button>
       </div>
     </div>
+
     <div class="travel-card" onclick="openModal('travel4')">
       <div class="card-img-wrap"><div class="photo-placeholder"><span>Photo 9 — Travel Memory 4</span></div></div>
       <div class="travel-card-body">
@@ -1417,19 +1583,25 @@
   </div>
   <div class="food-scroll-track">
     <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 10 — Food Memory 1</span></div><span class="food-hearts">💜</span></div>
-      <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
+      <div class="food-img-wrap">
+        <img class="travel-photo" src="images/food1.jpeg" alt="Food Memory 1" loading="lazy">
+      <span class="food-hearts">💜</span></div>
+      <div class="food-body"><h3>MOMO</h3><p>Hey..!! my foody baby 😍.</p></div>
+    </div>
+
+
+    <div class="food-card">
+      <div class="food-img-wrap">
+        <img class="travel-photo" src="images/food2.jpeg" alt="Food Memory 1" loading="lazy">
+        <span class="food-hearts">🍜</span></div>
+      <div class="food-body"><h3>Fried Rice</h3><p>Ami naki Take khawaiya dei na....😒</p></div>
     </div>
     <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 11 — Food Memory 2</span></div><span class="food-hearts">🍜</span></div>
-      <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
+      <div class="food-img-wrap"><img class="travel-photo" src="images/food3.jpeg" alt="Food Memory 3" loading="lazy"></div><span class="food-hearts">☕</span></div>
+      <div class="food-body"><h3>Cold Tea???</h3><p>Italian Pani...😒</p></div>
     </div>
     <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 12 — Food Memory 3</span></div><span class="food-hearts">🍰</span></div>
-      <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
-    </div>
-    <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 13 — Food Memory 4</span></div><span class="food-hearts">☕</span></div>
+      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 13 — Food Memory 4</span></div><span class="food-hearts">🍰</span></div>
       <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
     </div>
     <div class="food-card">
@@ -1829,9 +2001,14 @@ renderQuestion();
 
 // ── TRAVEL MODAL ──
 const modalData = {
-  travel1: { title: "Add Location Name Here", story: "Write your travel memory story here. Describe the journey, the feelings, the little details you never want to forget.", photos: [] },
-  travel2: { title: "Add Location Name Here", story: "Write your travel memory story here…", photos: [] },
-  travel3: { title: "Add Location Name Here", story: "Write your travel memory story here…", photos: [] },
+  travel1: { title: "On the River", story: "Moumi... You are the best thing that has ever happened to me. you are like a Drug to me at this time. Whnever I take breath I can fell you. whenever I look I can see you 💜. Those times are so much precious for us. what you think about this? dont this gives you Goosebumps? 💜", 
+  photos: [{src: "images/travel1_d1.jpeg"}, {src: "images/travel1_d2.jpeg"}] },
+
+  travel2: { title: "Modhu City", story: "Can you remember , that day  was hungry and you brought lunch box for me. And we went to Modhu city. We had so much fun there. I am so happy that you are in my life. I love you so much 💜", 
+  photos: [{src: "images/travel2_d2.jpeg"}, {src: "images/travel2_d3.jpeg"},{src: "images/travel2_d4.jpeg"}] },
+
+  travel3: { title: "Toggi Fun World", story: "We go there but the sadest part was that we couldn't go to the rides because of the Time. But we had so much fun just walking around and enjoying each other's company. I will never forget that day, it was so special to me 💜", 
+  photos: [{src: "images/travel3_d2.jpeg"}] },
   travel4: { title: "Add Location Name Here", story: "Write your travel memory story here…", photos: [] }
 };
 
