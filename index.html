@@ -1215,6 +1215,104 @@
 }
 
 
+.timeline-photo.full-pic {
+  aspect-ratio: auto;      /* Removes the forced 4:3 ratio */
+  object-fit: contain;     /* Shows the full image without cropping */
+  max-height: 500px;       /* Optional: prevents extremely tall images */
+  background: #1A0D1A;     /* Matches your dark theme background */
+}
+
+
+/* ── FIREWORKS CANVAS ── */
+#fireworks-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+#fireworks-canvas.active { opacity: 1; }
+ 
+/* ── MOUMI NAME DISPLAY ── */
+#moumi-name-display {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 51;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+#moumi-name-display.show { opacity: 1; }
+ 
+.moumi-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 16vw, 10rem);
+  font-weight: 700;
+  font-style: italic;
+  background: linear-gradient(
+    135deg,
+    #FFD700 0%,
+    #FF69B4 25%,
+    #E8C07A 50%,
+    #FF1493 75%,
+    #FFD700 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: moumi-shimmer 2s ease-in-out infinite, moumi-pop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  letter-spacing: 6px;
+  text-align: center;
+  filter: drop-shadow(0 0 40px rgba(255, 100, 180, 0.9))
+          drop-shadow(0 0 80px rgba(255, 215, 0, 0.6));
+  will-change: transform, opacity;
+  transform: scale(0);
+  text-shadow: none;
+}
+ 
+@keyframes moumi-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes moumi-pop {
+  0%   { transform: scale(0) rotate(-5deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(2deg); opacity: 1; }
+  80%  { transform: scale(0.95) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+ 
+/* Sparkle ring around MOUMI */
+.moumi-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  pointer-events: none;
+}
+.moumi-heart-orb {
+  position: absolute;
+  font-size: 2rem;
+  animation: orbit-spin linear infinite;
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 8px rgba(255,100,200,0.9));
+}
+@keyframes orbit-spin {
+  from { transform: rotate(var(--start-deg)) translateX(var(--radius)) rotate(calc(-1 * var(--start-deg))); }
+  to   { transform: rotate(calc(var(--start-deg) + 360deg)) translateX(var(--radius)) rotate(calc(-1 * (var(--start-deg) + 360deg))); }
+}
+ 
+/* ── FIREWORKS LAUNCH FLASH ── */
+@keyframes launch-flash {
+  0%   { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0); }
+}
+
+
 
   /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
@@ -1254,7 +1352,7 @@
 <!-- MUSIC -->
 <button id="music-btn" title="Toggle music">🎵</button>
 <audio id="bg-music" loop>
-  <!-- <source src="music/piano.mp3" type="audio/mpeg"> -->
+  <source src="music/piano1.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ════════════════════════════════════════
@@ -1512,7 +1610,7 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <img class="timeline-photo" src="images/memory16.jpg" alt="Memory 16">
+        <img class="timeline-photo full-pic" src="images/memory16.jpg" alt="Memory 16">
         <div class="photo-placeholder"><span>My birthday </span></div>
         <div class="timeline-body">
           <div class="timeline-date">20 Aug 2025</div>
@@ -1531,6 +1629,141 @@
           <div class="timeline-date">17 December 2025</div>
           <div class="timeline-title">Picnic </div>
           <p class="timeline-text">we go for a picnic with our friends and had a great time together. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory19.jpg" alt="Memory 19">
+        <div class="photo-placeholder"><span>Danish Chicken </span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Danish Chicken </div>
+          <p class="timeline-text">Look how cute we are!!. You are the most favourit Flover. I like you more than the Danish Chicken </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory20.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>BFC </span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">BFC</div>
+          <p class="timeline-text">My Uncountable Kiss only for your forhead. Not for this life, i hope ill Adore you in my another life also </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory21.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>Gaming</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Gaming</div>
+          <p class="timeline-text">We had so much fun playing games together. You are the best gaming partner I could ask for.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory22.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>University Partner</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">University Partner</div>
+          <p class="timeline-text">Hey!! My University Partner. In my this Uni life, you are my most valuable and cherished companion. I cant think anything without you. Never....</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo full-pic" src="images/memory23.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>EId 2026</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">20 March 2026</div>
+          <div class="timeline-title">EId 2026</div>
+          <p class="timeline-text">A romantic and Perfect EId for us. This day you looked So adorable. My eyes couldn't take their eyes off of you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo full-pic" src="images/memory24.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>EId 2026</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">20 March 2026</div>
+          <div class="timeline-title">EId 2026</div>
+          <p class="timeline-text">Hey My angry bird number 2. How you can get angry with me all of the time? i am your little Dudu, but yoy always scared me you your swinging mood</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo full-pic" src="images/memory25.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>Movie Date</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Movie Date</div>
+          <p class="timeline-text">We had such a great time at the movies together. You always know how to make even the simplest outings memorable. We hade a amazing time togather</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory26.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>Champion</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Champion</div>
+          <p class="timeline-text">My Programming Partner... You won the programming competition! and lost the every powerful opponents. i am so proud of you!</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory27.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>Our Nobo Borsho</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Our Nobo Borsho</div>
+          <p class="timeline-text">Our special moment together, filled with love and laughter. You make every day better just by being you. This day you looks amazing, my love! My nouse are missing your smells</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <img class="timeline-photo" src="images/memory28.jpg" alt="Memory 20">
+        <div class="photo-placeholder"><span>Our Last Class</span></div>
+        <div class="timeline-body">
+          <div class="timeline-date">22 April 2026</div>
+          <div class="timeline-title">Our Last Class</div>
+          <p class="timeline-text">This a memoriable day for us isnt it? From the starting of my journey with you , i used to pick you up from your home and go to campus togather. And the Last day i didnt miss the change to do the same thing. I always remember the good times we had together. and i also take care of you like i did, and ill increase this In Sha Allah</p>
         </div>
       </div>
     </div>
@@ -1622,14 +1855,7 @@
       </div>
     </div>
 
-    <div class="travel-card" onclick="openModal('travel4')">
-      <div class="card-img-wrap"><div class="photo-placeholder"><span>Photo 9 — Travel Memory 4</span></div></div>
-      <div class="travel-card-body">
-        <h3>Add Location Name</h3>
-        <p>Write a short description of this trip here…</p>
-        <button class="btn-view-memory">View Memory 💜</button>
-      </div>
-    </div>
+    
   </div>
 </section>
 
@@ -1690,14 +1916,24 @@
     </div>
 
     <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 13 — Food Memory 4</span></div><span class="food-hearts">🍰</span></div>
-      <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
+      <div class="food-img-wrap">
+        <img class="travel-photo" src="images/food7.jpg" alt="Food Memory 6" loading="lazy">
+      <span class="food-hearts">🍗</span></div>
+      <div class="food-body"><h3>BFC</h3><p>You are the Best opponent during eating BFC</p></div>
     </div>
+
     <div class="food-card">
-      <div class="food-img-wrap"><div class="photo-placeholder"><span>Photo 14 — Food Memory 5</span></div><span class="food-hearts">🌸</span></div>
-      <div class="food-body"><h3>Add Food Name</h3><p>Add your funny caption or inside joke here…</p></div>
+      <div class="food-img-wrap">
+        <img class="travel-photo" src="images/food8.jpeg" alt="Food Memory 6" loading="lazy">
+      <span class="food-hearts">🍗</span></div>
+      <div class="food-body"><h3>Chicken Steak</h3><p>You always love to eat food dear</p></div>
     </div>
+
+    
+
+
   </div>
+
 </section>
 
 <!-- ════════════════════════════════════════
@@ -1710,18 +1946,40 @@
     <div class="section-line"></div>
   </div>
   <div class="bubu-grid">
+
     <div class="bubu-item">
-      <div class="photo-placeholder" style="border-radius:22px;aspect-ratio:1;"><span>GIF 1 — Add bubu1.gif</span></div>
-      <div class="bubu-caption">"This is literally us 😄💜"</div>
+      <video src="images/bubu1.mp4" 
+             autoplay muted loop playsinline
+             style="width:100%; border-radius:22px; aspect-ratio:1; object-fit:cover; display:block; box-shadow: 0 10px 36px rgba(107,31,58,0.4), 0 0 0 1px rgba(200,96,126,0.2);">
+      </video>
+      <div class="bubu-caption">"Tumi amak sara din Avabe Maro 😓💜"</div>
     </div>
+
     <div class="bubu-item">
-      <div class="photo-placeholder" style="border-radius:22px;aspect-ratio:1;"><span>GIF 2 — Add bubu2.gif</span></div>
-      <div class="bubu-caption">"Everyday, without fail 🥺"</div>
+      <video src="images/bubu2.mp4" 
+             autoplay muted loop playsinline
+             style="width:100%; border-radius:22px; aspect-ratio:1; object-fit:cover; display:block; box-shadow: 0 10px 36px rgba(107,31,58,0.4), 0 0 0 1px rgba(200,96,126,0.2);">
+      </video>
+      <div class="bubu-caption">"We Eat like this 🤗"</div>
     </div>
+
     <div class="bubu-item">
-      <div class="photo-placeholder" style="border-radius:22px;aspect-ratio:1;"><span>GIF 3 — Add bubu3.gif</span></div>
-      <div class="bubu-caption">"My favorite people 💜"</div>
+      <video src="images/bubu3.mp4" 
+             autoplay muted loop playsinline
+             style="width:100%; border-radius:22px; aspect-ratio:1; object-fit:cover; display:block; box-shadow: 0 10px 36px rgba(107,31,58,0.4), 0 0 0 1px rgba(200,96,126,0.2);">
+      </video>
+      <div class="bubu-caption">"Angry Mutki bubu amar 😓"</div>
     </div>
+
+    <div class="bubu-item">
+      <video src="images/dudu1.mp4" 
+             autoplay muted loop playsinline
+             style="width:100%; border-radius:22px; aspect-ratio:1; object-fit:cover; display:block; box-shadow: 0 10px 36px rgba(107,31,58,0.4), 0 0 0 1px rgba(200,96,126,0.2);">
+      </video>
+      <div class="bubu-caption">"Tmk Chara ami Avabe Kadi"</div>
+    </div>
+
+
   </div>
 </section>
 
@@ -1733,7 +1991,7 @@
     <span class="final-lock-icon">🔐</span>
     <h2>One last thing…</h2>
     <p>You've walked through every memory, every laugh, every quiet moment.<br><br>There's one more door. But it can only be opened by someone who truly knows…</p>
-    <span class="final-question">"Do you know how much I love you?"</span>
+    <span class="final-question">"Tell me How much I love you?"</span>
     <div class="final-lock-input-wrap">
       <input type="text" id="final-answer" placeholder="Your answer…" autocomplete="off" />
       <button class="btn-unlock" onclick="checkFinalAnswer()">Unlock Final Surprise 💜</button>
@@ -1748,6 +2006,34 @@
 <section id="final-surprise">
   <canvas id="fireworks-canvas"></canvas>
 
+  <!-- MOUMI Name Overlay -->
+<div id="moumi-name-display">
+  <div style="position:relative; display:flex; align-items:center; justify-content:center;">
+    <div class="moumi-hearts" id="moumi-hearts-container"></div>
+    <div style="text-align:center;">
+      <div class="moumi-text" id="moumi-text">Moumi</div>
+      <div style="
+        font-family:'Cormorant Garamond',serif;
+        font-size:clamp(1rem,3vw,1.6rem);
+        color:rgba(255,215,0,0.9);
+        letter-spacing:4px;
+        margin-top:10px;
+        font-style:italic;
+        opacity:0;
+        animation: fadeInUp 1s ease 1.2s forwards;
+        text-shadow: 0 0 20px rgba(255,200,100,0.8);
+      ">✦ My Universe ✦</div>
+    </div>
+  </div>
+</div>
+ 
+<style>
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+</style>
+
   <div class="surprise-inner">
     <span class="surprise-crown">👑</span>
     <span class="surprise-tag">✦ A letter from the heart ✦</span>
@@ -1757,40 +2043,71 @@
 
     <!-- FINAL LETTER -->
     <div class="letter-card">
-      <span class="letter-salutation">My love, my home, my favorite everything…</span>
-      <p>On this special day, I want you to know that you are the most extraordinary person I have ever had the privilege of knowing. Your laugh is my favorite sound. Your smile is my favorite sight. Your heart is my favorite place to be.</p>
-      <p>Every single morning, I am grateful that life chose you for me. Every hard day becomes soft when you're near. You carry so much beauty inside you — the kind that most people never even notice, but I see it every single day.</p>
-      <p>You deserve all of it — the flowers, the poems, the grand gestures, the quiet moments. You deserve someone who chooses you again and again. And I do. I choose you. Today, tomorrow, and in every lifetime.</p>
-      <!-- <p>Your personal message here…</p> -->
-      <!-- PHOTO SLOT 15: <img src="images/special.jpg" style="width:100%;border-radius:16px;margin:22px 0;" alt="Special moment"> -->
-      <span class="letter-sign">Forever yours, with every beat 💜</span>
-    </div>
+  <span class="letter-salutation">My love, my home, my favorite everything…</span>
+
+  <p>I still remember that day in our C programming class… I didn’t know then that one simple moment would turn into the most beautiful chapter of my life. But when I look back now, it feels like fate quietly chose you for me.</p>
+
+  <p>There is something about you that no one else has. The way you love… so purely, so deeply. The way you hug me, the way you come close to me like I am your safest place… In those moments, the whole world disappears, and it’s just us. And I melt… every single time.</p>
+
+  <p>You are childish in the most beautiful way, emotional in the most honest way… and that’s what makes you you. That’s what makes you different from everyone else. And that’s why my heart chose you, and never looked anywhere else again.</p>
+
+  <p>I realized I truly love you the moment I looked into your eyes and felt something I had never felt before… a peace, a pull, a feeling of “this is where I belong.”</p>
+
+  <p>Yes, we fight. We argue. But even in those moments, we find our way back to each other. Because no matter what happens… you and I, we are never meant to stay apart.</p>
+
+  <p>The smallest things about you stay with me the most. The way you feed me with your own hands… That simple act carries more love than a thousand words. And when you are not around, that’s what I miss the most — not just you, but the way you make me feel loved without even trying.</p>
+
+  <p>With you, I feel complete. With you, I feel a kind of happiness I never knew existed. You are not just my girlfriend… you are my life partner, my emotional home, my safe place.</p>
+
+  <p>I don’t just want moments with you… I want a lifetime. I want to travel with you, laugh with you, grow with you, and one day… grow old with you.</p>
+
+  <p>I will choose you again and again, in every situation, in every lifetime, without hesitation.</p>
+
+  <p style="text-align:center; color:var(--gold-light); font-size:1.15rem; margin:28px 0;">
+    "If I were given a thousand lives to live,<br>
+    I would search for you in every single one.<br>
+    I need you <br>
+    like the moon <br>
+    needs the dark <br>
+    without each other, <br>
+    we don’t exist. <br>
+    I wont miss a single chance to love you, to hold you, to be with you.<br>
+    I want to give Deep dive inside you again and again<br>
+    I will be deep untill you push me out, and I will come back till the end, <br>
+    because i lovee to hit the spot. <br> "
+
+  </p>
+
+  <p>Happy Birthday, my love. You are my today, my tomorrow, and everything in between. And no matter what happens… you will always be my forever. 💜</p>
+
+  <span class="letter-sign">Forever yours, Samir 💜</span>
+</div>
 
     <!-- PROMISES -->
     <div class="promise-wrap">
       <h3>✦ My Promises to You ✦</h3>
       <ul>
-        <li><span class="promise-icon">💜</span>I promise to always be your safe place, no matter what.</li>
-        <li><span class="promise-icon">🌹</span>I promise to hold your hand through every storm and every calm.</li>
-        <li><span class="promise-icon">✨</span>I promise to make you laugh, even on your hardest days.</li>
-        <li><span class="promise-icon">💜</span>I promise to love you more today than I did yesterday.</li>
-        <li><span class="promise-icon">🌙</span>I promise to never stop choosing you.</li>
+        <li><span class="promise-icon">💜</span>I promise to Stay with you whatever the situation is.</li>
+        <li><span class="promise-icon">🌹</span>I promise to Re-Shape my Self Accourding to your needs.</li>
+        <li><span class="promise-icon">✨</span>I promise to Guide you Every where you need me.</li>
+        <li><span class="promise-icon">💜</span>I promise to make you screaming my name every night under me.</li>
+        <li><span class="promise-icon">🌙</span>I promise to mark you with my bites after the nights.</li>
         <!-- Add more: <li><span class="promise-icon">💜</span>Your promise here</li> -->
       </ul>
     </div>
 
     <!-- SPECIAL PHOTO GRID -->
-    <div class="final-photo-grid">
+    <!--<div class="final-photo-grid">
       <div class="photo-placeholder" style="border-radius:18px;aspect-ratio:1;"><span>Photo 16</span></div>
       <div class="photo-placeholder" style="border-radius:18px;aspect-ratio:1;"><span>Photo 17</span></div>
       <div class="photo-placeholder" style="border-radius:18px;aspect-ratio:1;"><span>Photo 18</span></div>
       <div class="photo-placeholder" style="border-radius:18px;aspect-ratio:1;"><span>Photo 19</span></div>
       <div class="photo-placeholder" style="border-radius:18px;aspect-ratio:1;"><span>Photo 20</span></div>
-    </div>
+    </div> -->
 
     <!-- CLOSING -->
     <div class="surprise-final-wrap">
-      <div class="surprise-final-line">"You are my forever, my always, my everything 💜"</div>
+      <div class="surprise-final-line">"I Love you beyond the univers Moumi 💜"</div>
     </div>
 
     <div class="surprise-footer">Happy Birthday, my love ✦ Written with all of my heart ✦</div>
@@ -1927,11 +2244,19 @@ function checkLogin() {
   const errEl = document.getElementById('login-error');
   if (ACCEPTED_PASSWORDS.includes(val)) {
     const overlay = document.getElementById('login-overlay');
+    
+    // Auto-play music on successful login
+    bgMusic.play().catch(() => {});
+    musicPlaying = true;
+    musicBtn.textContent = '🎶';
+    musicBtn.classList.add('playing');
+    
     gsap.to(overlay, {opacity: 0, duration: 1.4, ease: 'power2.inOut', onComplete: () => {
       overlay.remove();
       runHeroAnimation();
     }});
-  } else {
+  }
+  else {
     errEl.textContent = '💭 That doesn\'t seem right… Think harder, my love.';
     const box = document.querySelector('.login-box');
     gsap.fromTo(box, {x: -8}, {x: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)'});
@@ -2007,25 +2332,25 @@ musicBtn.addEventListener('click', () => {
 // ── QUIZ ──
 const quizData = [
   {
-    question: "When did we first meet each other?",
-    options: ["28 August 2022", "15 March 2022", "10 June 2021", "1 January 2023"],
+    question: "When did we Complete Our First Lunch Journy Together?",
+    options: ["11 January 2022", "04 February 2022", "10 June 2022", "1 January 2024"],
     answer: 0,
     correct: "Yes! That was the day everything changed 💜",
     wrong: "Hmm… think harder, my love! That day is too important to forget 😊"
   },
   {
-    question: "Where was our very first food date?",
-    options: ["Add your option here","Add your option here","Add the correct place here ✓","Add your option here"],
+    question: "What i like most in you?",
+    options: ["Your Eyes ","Your Smile","Your Wetness","your Butt"],
     answer: 2,
-    correct: "Of course you remember! That place will always be special 🍜💜",
+    correct: "Yeah You got it, I really love it my dear💜",
     wrong: "Try again, my love… you were there! 😄"
   },
   {
-    question: "What is something I always say to you?",
-    options: ["Add your option here","Write what you always say ✓","Add your option here","Add your option here"],
+    question: "What is My Tag Line for you?",
+    options: ["I love you Beyond the Universe?","Even If there is no one besides you, I am always here for you in any situatiuon in any conditions💜","I want you not for my this life, I need you for my another life also","You are the most Precious woman in my life."],
     answer: 1,
     correct: "You know exactly what I mean when I say it 💜",
-    wrong: "Almost… but not quite! Think of what I say most 😊"
+    wrong: "This is so much Tricky , Almost… but not quite! Think of what I say from the deep heart 😊"
   }
 ];
 
@@ -2131,12 +2456,12 @@ function closeModal() { document.getElementById('modal-overlay').classList.remov
 function closeModalOutside(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
 
 // ── FINAL LOCK ──
-const FINAL_ANSWERS = ['infinite','infinite 💜','infinitely','forever','infinite love','infinity'];
+const FINAL_ANSWERS = ['infinite','infinite 💜','infinitely','forever','infinite love','infinity','huge','immeasurable','endless','limitless','boundless','unending','everlasting','without limits','beyond measure','more than anything','more than the universe','to the moon and back', 'beyond the universe','more than the stars','more than words can say','more than anything else','more than life itself','more than all the oceans','more than all the galaxies','more than all the grains of sand','you are my everything'];
 
 function checkFinalAnswer() {
   const val   = document.getElementById('final-answer').value.trim().toLowerCase().replace(/[💜♥❤]/g,'').trim();
   const errEl = document.getElementById('unlock-error');
-  if (FINAL_ANSWERS.includes(val) || val.includes('infinite') || val.includes('forever') || val.includes('infinit')) {
+  if (FINAL_ANSWERS.includes(val) || val.includes('infinite') || val.includes('forever') || val.includes('infinit') || val.includes('limitless') || val.includes('endless') || val.includes('beyond') || val.includes('more than') || val.includes('everything') || val.includes('unending') || val.includes('everlasting') || val.includes('immeasurable') || val.includes('huge') || val.includes('without limits') || val.includes('to the moon') || val.includes('beyond the universe') || val.includes('more than the stars') || val.includes('more than words') || val.includes('more than life') || val.includes('more than all the oceans') || val.includes('more than all the galaxies') || val.includes('more than all the grains of sand') || val.includes('you are my everything')) {
     errEl.textContent = '';
     document.getElementById('final-lock').style.display = 'none';
     const surpriseEl = document.getElementById('final-surprise');
@@ -2162,67 +2487,421 @@ function startFireworks() {
   const ctx    = canvas.getContext('2d');
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-
-  const particles = [];
-
-  function spawnBurst(x, y) {
-    const colors = ['#E8C07A','#C4607E','#A8365A','#F5EDE0','#C8965A','#6B1F3A','#DDA0DD'];
-    for (let i = 0; i < 70; i++) {
-      const angle = (Math.PI * 2 / 70) * i;
-      const speed = 2 + Math.random() * 5;
-      particles.push({
-        x, y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        alpha: 1,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        r: 2 + Math.random() * 3.5,
-        isHeart: Math.random() < 0.35
-      });
+  canvas.classList.add('active');
+ 
+  window.addEventListener('resize', () => {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+ 
+  // ── COLOR PALETTES ──
+  const PALETTES = [
+    ['#FFD700','#FFA500','#FF8C00','#FFEC8B','#FFE4B5'],   // Gold burst
+    ['#FF69B4','#FF1493','#FFB6C1','#FF007F','#FFC0CB'],   // Pink burst
+    ['#C8965A','#E8C07A','#F5EDE0','#A8365A','#6B1F3A'],   // Original theme
+    ['#DA70D6','#EE82EE','#DDA0DD','#BA55D3','#9370DB'],   // Purple burst
+    ['#00FFFF','#40E0D0','#7FFFD4','#E0FFFF','#AFEEEE'],   // Cyan burst
+    ['#FF6347','#FF4500','#FF7F50','#FFD700','#FFDAB9'],   // Warm burst
+  ];
+ 
+  // ── PARTICLE CLASS ──
+  class Particle {
+    constructor(x, y, palette, type='circle') {
+      this.x = x; this.y = y;
+      const angle = Math.random() * Math.PI * 2;
+      const speed = type === 'glitter'
+        ? 0.5 + Math.random() * 2
+        : type === 'ring'
+        ? 3 + Math.random() * 2
+        : 1.5 + Math.random() * 7;
+      this.vx = Math.cos(angle) * speed;
+      this.vy = Math.sin(angle) * speed - (type === 'rocket' ? 0 : 0);
+      this.alpha  = 1;
+      this.color  = palette[Math.floor(Math.random() * palette.length)];
+      this.r      = type === 'glitter' ? 1 + Math.random() * 2 : 2 + Math.random() * 4;
+      this.type   = type;
+      this.gravity = type === 'glitter' ? 0.02 : 0.07;
+      this.decay   = type === 'glitter' ? 0.008 : type === 'ring' ? 0.016 : 0.013;
+      this.spin    = (Math.random() - 0.5) * 0.3;
+      this.angle   = Math.random() * Math.PI * 2;
+      this.trail   = [];
+      this.maxTrail = type === 'star' ? 6 : 3;
+      this.wobble  = Math.random() * 0.1;
+      this.wobbleSpeed = 0.05 + Math.random() * 0.05;
+      this.wobbleT = Math.random() * Math.PI * 2;
     }
-  }
-
-  let fwInterval = setInterval(() => {
-    spawnBurst(
-      canvas.width  * (0.15 + Math.random() * 0.7),
-      canvas.height * (0.08 + Math.random() * 0.5)
-    );
-  }, 650);
-
-  setTimeout(() => clearInterval(fwInterval), 9000);
-
-  function drawFrame() {
-    ctx.fillStyle = 'rgba(16,8,24,0.15)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.x  += p.vx;
-      p.y  += p.vy;
-      p.vy += 0.055;
-      p.alpha -= 0.012;
-      if (p.alpha <= 0) { particles.splice(i, 1); continue; }
-      ctx.save();
-      ctx.globalAlpha = p.alpha;
-      if (p.isHeart) {
-        ctx.font = `${p.r * 4}px serif`;
-        ctx.textAlign    = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle    = p.color;
-        ctx.fillText('♡', p.x, p.y);
-      } else {
+    update() {
+      this.trail.push({ x: this.x, y: this.y, alpha: this.alpha });
+      if (this.trail.length > this.maxTrail) this.trail.shift();
+      this.wobbleT += this.wobbleSpeed;
+      this.vx += Math.sin(this.wobbleT) * this.wobble;
+      this.x  += this.vx;
+      this.y  += this.vy;
+      this.vy += this.gravity;
+      this.vx *= 0.98;
+      this.alpha -= this.decay;
+      this.angle += this.spin;
+    }
+    draw(ctx) {
+      // Trail
+      this.trail.forEach((pt, i) => {
+        const ta = (i / this.trail.length) * pt.alpha * 0.4;
+        ctx.save();
+        ctx.globalAlpha = ta;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
+        ctx.arc(pt.x, pt.y, this.r * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      });
+ 
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.alpha);
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+ 
+      if (this.type === 'heart' || (this.type === 'circle' && Math.random() < 0.0005)) {
+        ctx.font = `${this.r * 3.5}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = this.color;
+        ctx.fillText('♥', 0, 0);
+      } else if (this.type === 'star') {
+        drawStar(ctx, 0, 0, 5, this.r * 1.8, this.r * 0.8, this.color, this.alpha);
+      } else if (this.type === 'sparkle') {
+        drawSparkle(ctx, 0, 0, this.r * 2, this.color);
+      } else if (this.type === 'ring') {
+        ctx.beginPath();
+        ctx.arc(0, 0, this.r * 1.2, 0, Math.PI * 2);
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      } else {
+        // Glowing circle
+        const grd = ctx.createRadialGradient(0, 0, 0, 0, 0, this.r);
+        grd.addColorStop(0, this.color);
+        grd.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(0, 0, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
         ctx.fill();
       }
       ctx.restore();
     }
+    get dead() { return this.alpha <= 0; }
+  }
+ 
+  // ── ROCKET CLASS ──
+  class Rocket {
+    constructor() {
+      this.x   = canvas.width * (0.15 + Math.random() * 0.7);
+      this.y   = canvas.height + 10;
+      this.tx  = canvas.width  * (0.1 + Math.random() * 0.8);
+      this.ty  = canvas.height * (0.05 + Math.random() * 0.45);
+      this.speed = 14 + Math.random() * 8;
+      const dx = this.tx - this.x;
+      const dy = this.ty - this.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      this.vx = (dx / dist) * this.speed;
+      this.vy = (dy / dist) * this.speed;
+      this.palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+      this.trail   = [];
+      this.exploded = false;
+      this.color   = this.palette[0];
+    }
+    update() {
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > 18) this.trail.shift();
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += 0.25; // slight gravity on rocket
+      // Explode near target
+      if (this.y <= this.ty + 20 || Math.hypot(this.x - this.tx, this.y - this.ty) < 20) {
+        this.exploded = true;
+      }
+    }
+    draw(ctx) {
+      // Glowing trail
+      this.trail.forEach((pt, i) => {
+        const a = (i / this.trail.length) * 0.7;
+        ctx.save();
+        ctx.globalAlpha = a;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 2.5 - i * 0.1, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.restore();
+      });
+      // Rocket head
+      ctx.save();
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.shadowBlur = 16;
+      ctx.shadowColor = this.color;
+      ctx.fill();
+      ctx.restore();
+    }
+    get done() { return this.exploded; }
+  }
+ 
+  // ── HELPERS ──
+  function drawStar(ctx, x, y, pts, outerR, innerR, color, alpha) {
+    ctx.beginPath();
+    for (let i = 0; i < pts * 2; i++) {
+      const r   = i % 2 === 0 ? outerR : innerR;
+      const ang = (i * Math.PI) / pts;
+      i === 0 ? ctx.moveTo(x + r * Math.sin(ang), y - r * Math.cos(ang))
+              : ctx.lineTo(x + r * Math.sin(ang), y - r * Math.cos(ang));
+    }
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+ 
+  function drawSparkle(ctx, x, y, r, color) {
+    ctx.fillStyle = color;
+    for (let i = 0; i < 4; i++) {
+      const ang = (i / 4) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.ellipse(
+        x + Math.cos(ang) * r * 0.4,
+        y + Math.sin(ang) * r * 0.4,
+        r * 0.18, r * 0.55, ang, 0, Math.PI * 2
+      );
+      ctx.fill();
+    }
+  }
+ 
+  // ── BURST SPAWNER ──
+  function spawnBurst(x, y, palette, style='normal') {
+    const parts = [];
+    const count = style === 'mega' ? 180 : style === 'ring' ? 60 : style === 'glitter' ? 120 : 90;
+ 
+    if (style === 'ring') {
+      // Perfect ring burst
+      for (let i = 0; i < count; i++) {
+        const p = new Particle(x, y, palette, 'ring');
+        const angle = (Math.PI * 2 / count) * i;
+        const speed = 4 + Math.random() * 1.5;
+        p.vx = Math.cos(angle) * speed;
+        p.vy = Math.sin(angle) * speed;
+        parts.push(p);
+      }
+    } else if (style === 'glitter') {
+      for (let i = 0; i < count; i++) {
+        parts.push(new Particle(x, y, palette, 'glitter'));
+      }
+    } else {
+      // Mixed burst: circles + hearts + stars + sparkles
+      for (let i = 0; i < count; i++) {
+        const r   = Math.random();
+        const type = r < 0.30 ? 'heart'
+                   : r < 0.50 ? 'star'
+                   : r < 0.62 ? 'sparkle'
+                   : 'circle';
+        parts.push(new Particle(x, y, palette, type));
+      }
+      // Extra glitter shower
+      for (let i = 0; i < 40; i++) {
+        parts.push(new Particle(x, y, palette, 'glitter'));
+      }
+    }
+ 
+    // Flash
+    flashAt(x, y, palette[0]);
+    return parts;
+  }
+ 
+  // ── FLASH EFFECT ──
+  function flashAt(x, y, color) {
+    const flashes = [];
+    flashes.push({ x, y, r: 0, maxR: 90, color, alpha: 0.6 });
+    return flashes;
+  }
+  const flashes = [];
+ 
+  // ── MOUMI NAME FINALE ──
+  function spawnMoumiFinale() {
+    const cx = canvas.width  / 2;
+    const cy = canvas.height * 0.38;
+ 
+    // Letters of MOUMI, each with its own burst
+    const letters = ['M','O','U','M','I'];
+    const spread  = Math.min(canvas.width * 0.7, 520);
+    const startX  = cx - spread / 2;
+    const gap     = spread / (letters.length - 1);
+ 
+    letters.forEach((letter, i) => {
+      setTimeout(() => {
+        const lx = startX + gap * i;
+        const ly = cy + (Math.sin(i * 1.2) * 40);
+        const pal = PALETTES[i % PALETTES.length];
+ 
+        // Big burst per letter
+        allParticles.push(...spawnBurst(lx, ly, pal, 'mega'));
+        allParticles.push(...spawnBurst(lx, ly, pal, 'ring'));
+        flashes.push({ x: lx, y: ly, r: 0, maxR: 120, color: pal[0], alpha: 0.7 });
+      }, i * 260);
+    });
+ 
+    // After letters — show the MOUMI name overlay
+    setTimeout(() => {
+      const display = document.getElementById('moumi-name-display');
+      if (display) {
+        display.classList.add('show');
+        spawnOrbitHearts();
+        // Grand finale: full-screen burst storm
+        for (let k = 0; k < 12; k++) {
+          setTimeout(() => {
+            const pal = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+            const bx  = canvas.width  * (0.1 + Math.random() * 0.8);
+            const by  = canvas.height * (0.05 + Math.random() * 0.55);
+            allParticles.push(...spawnBurst(bx, by, pal, 'mega'));
+            flashes.push({ x: bx, y: by, r: 0, maxR: 100, color: pal[0], alpha: 0.5 });
+          }, k * 220);
+        }
+      }
+    }, letters.length * 260 + 400);
+ 
+    // Fade out MOUMI display after 7s, stop canvas after 10s
+    setTimeout(() => {
+      const display = document.getElementById('moumi-name-display');
+      if (display) { display.style.transition = 'opacity 2s'; display.style.opacity = '0'; }
+    }, 9000);
+    setTimeout(() => {
+      canvas.classList.remove('active');
+    }, 12000);
+  }
+ 
+  // ── ORBIT HEARTS AROUND MOUMI ──
+  function spawnOrbitHearts() {
+    const container = document.getElementById('moumi-hearts-container');
+    if (!container) return;
+    const emojis  = ['💜','✨','🌸','💖','⭐','🌟','💫','🎉','🎊','💝'];
+    const count   = 12;
+    container.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('div');
+      el.className = 'moumi-heart-orb';
+      el.textContent = emojis[i % emojis.length];
+      const radius = 200 + Math.sin(i * 0.8) * 80;
+      const startDeg = (360 / count) * i;
+      const duration = 4 + Math.random() * 4;
+      el.style.cssText = `
+        --start-deg: ${startDeg}deg;
+        --radius: ${radius}px;
+        animation-duration: ${duration}s;
+        top: 50%; left: 50%;
+        transform-origin: 0 0;
+      `;
+      container.appendChild(el);
+    }
+  }
+ 
+  // ── STATE ──
+  const allParticles = [];
+  const rockets      = [];
+  let   phase        = 'normal'; // normal → finale
+  let   frameCount   = 0;
+ 
+  // ── ROCKET SCHEDULE ──
+  // Phase 1: random rockets for 7 seconds
+  const rocketInterval = setInterval(() => {
+    rockets.push(new Rocket());
+    if (Math.random() < 0.4) rockets.push(new Rocket()); // double rockets sometimes
+  }, 600);
+ 
+  // Phase 2: at 7s, launch MOUMI name sequence
+  setTimeout(() => {
+    clearInterval(rocketInterval);
+    phase = 'finale';
+    // Rapid rocket volley before the name
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => rockets.push(new Rocket()), i * 120);
+    }
+    setTimeout(spawnMoumiFinale, 1200);
+  }, 7000);
+ 
+  // ── DRAW LOOP ──
+  function drawFrame() {
+    frameCount++;
+ 
+    // Fade background
+    ctx.fillStyle = 'rgba(16, 8, 24, 0.18)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+    // Draw flash rings
+    for (let i = flashes.length - 1; i >= 0; i--) {
+      const f = flashes[i];
+      f.r    += 6;
+      f.alpha -= 0.04;
+      if (f.alpha <= 0) { flashes.splice(i, 1); continue; }
+      ctx.save();
+      ctx.globalAlpha = f.alpha;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.strokeStyle = f.color;
+      ctx.lineWidth   = 2;
+      ctx.shadowBlur  = 20;
+      ctx.shadowColor = f.color;
+      ctx.stroke();
+      ctx.restore();
+    }
+ 
+    // Update & draw rockets
+    for (let i = rockets.length - 1; i >= 0; i--) {
+      const r = rockets[i];
+      r.update();
+      r.draw(ctx);
+      if (r.done) {
+        // EXPLODE
+        const pal   = r.palette;
+        const style = Math.random() < 0.3 ? 'ring' : Math.random() < 0.5 ? 'glitter' : 'normal';
+        allParticles.push(...spawnBurst(r.x, r.y, pal, style));
+        flashes.push({ x: r.x, y: r.y, r: 0, maxR: 80, color: pal[0], alpha: 0.6 });
+        rockets.splice(i, 1);
+      }
+    }
+ 
+    // Update & draw particles
+    for (let i = allParticles.length - 1; i >= 0; i--) {
+      const p = allParticles[i];
+      p.update();
+      p.draw(ctx);
+      if (p.dead) allParticles.splice(i, 1);
+    }
+ 
+    // Ambient sparkle rain during finale
+    if (phase === 'finale' && frameCount % 3 === 0) {
+      const pal = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+      const sp  = new Particle(
+        Math.random() * canvas.width,
+        -10,
+        pal,
+        'glitter'
+      );
+      sp.vy    = 1 + Math.random() * 3;
+      sp.gravity = 0.01;
+      sp.decay   = 0.005;
+      allParticles.push(sp);
+    }
+ 
+    if (!canvas.classList.contains('active')) return;
     requestAnimationFrame(drawFrame);
   }
-
-  spawnBurst(canvas.width / 2, canvas.height * 0.4);
-  spawnBurst(canvas.width * 0.3, canvas.height * 0.3);
-  spawnBurst(canvas.width * 0.7, canvas.height * 0.35);
+ 
+  // ── INITIAL BIG BANG ──
+  const cx = canvas.width / 2;
+  const cy = canvas.height * 0.4;
+  allParticles.push(...spawnBurst(cx, cy, PALETTES[0], 'mega'));
+  allParticles.push(...spawnBurst(cx * 0.5, cy * 0.85, PALETTES[1], 'ring'));
+  allParticles.push(...spawnBurst(cx * 1.5, cy * 0.85, PALETTES[2], 'ring'));
+  flashes.push({ x: cx, y: cy, r: 0, maxR: 200, color: '#FFD700', alpha: 0.8 });
+ 
   drawFrame();
 }
 </script>
